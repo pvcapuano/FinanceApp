@@ -7,7 +7,7 @@ import Image from "next/image";
 import { HiAtSymbol, HiOutlineFingerPrint } from "react-icons/hi";
 import { signIn, signOut } from "next-auth/react";
 import { useFormik, FormikProps } from "formik";
-import loginValidate from "../lib/validate";
+import { loginValidate } from "../lib/validate";
 
 interface FormValues {
   email: string;
