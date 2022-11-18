@@ -45,29 +45,26 @@ function Guest() {
 //authorized user
 function User({ session, handleSignOut }: any) {
   return (
-    <main className="container mx-auto text-center py-20">
-      <h3 className="text-4xl font-bold">usuário</h3>
-
-      <div className="details">
-        <h5>{session.user.name}</h5>
-        <h5>{session.user.email}</h5>
+    <main className="container text-center  bg-gray-700 py-2 flex justify-between">
+      <div className="flex justify-center items-start flex-col content-start px-5">
+        <h3 className="text-1xl text-white color-white">
+          Olá, {session.user.name}
+        </h3>
+        <h5 className="text-white text-xs">{session.user.email}</h5>
       </div>
 
-      <div className="flex justify-center">
+      <div className="flex flex-row px-5 justify-center items-center">
+        <Link legacyBehavior href={"/profile"}>
+          <a className="flex justify-center items-center mr-2 h-7 p-2 rounded text-gray text-gray bg-white">
+            Perfil
+          </a>
+        </Link>
         <button
-          className="mt-5 px-10 py-1 rounded-sm bg-blue-500"
+          className="flex justify-center items-center rounded h-7 text-gray text-gray bg-white p-2"
           onClick={handleSignOut}
         >
           Sair
         </button>
-      </div>
-
-      <div className="flex justify-center">
-        <Link legacyBehavior href={"/profile"}>
-          <a className="mt-5 px-10 py-1 rounded-sm bg-gray-700">
-            Vá para seu perfil
-          </a>
-        </Link>
       </div>
     </main>
   );

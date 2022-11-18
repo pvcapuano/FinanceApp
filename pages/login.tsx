@@ -37,7 +37,7 @@ const Login = () => {
       callbackUrl: "/",
     });
 
-    if (status.ok) router.push(status.url);
+    if (status?.ok) router.push(status.url);
   }
 
   //google
