@@ -8,6 +8,7 @@ import { HiAtSymbol, HiOutlineFingerPrint } from "react-icons/hi";
 import { signIn, signOut } from "next-auth/react";
 import { useFormik, FormikProps } from "formik";
 import { loginValidate } from "../lib/validate";
+import { useRouter } from "next/router";
 
 interface FormValues {
   email: string;
@@ -15,8 +16,10 @@ interface FormValues {
 }
 
 const Login = () => {
-  //states
+  //hooks
   const [show, setShow] = useState(false);
+  const router = useRouter();
+  // formik hook
   const formik: FormikProps<FormValues> = useFormik<FormValues>({
     initialValues: {
       email: "",
@@ -26,10 +29,15 @@ const Login = () => {
     onSubmit: onSubmit,
   });
 
-  console.log(formik.errors);
-
   async function onSubmit(values: any) {
-    console.log(values);
+    const status = await signIn("credentials", {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+      callbackUrl: "/",
+    });
+
+    if(status.ok) router.push(status.url);
   }
 
   //google
