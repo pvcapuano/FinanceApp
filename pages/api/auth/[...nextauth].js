@@ -1,5 +1,4 @@
 import NextAuth from "next-auth";
-import React from "react";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectMongo from "../../../database/conn";
@@ -41,5 +40,5 @@ export default NextAuth({
       },
     }),
   ],
+  secret: "QOCcIWVcOYgBZFASM6ZyhnDLk6acSzDRCOHD1XA4EtA=",
 });
-NextAuth;
