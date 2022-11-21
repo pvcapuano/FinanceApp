@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useSession, getSession, signOut } from "next-auth/react";
+import ResumeItem from "../components/Card";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -45,28 +46,31 @@ function Guest() {
 //authorized user
 function User({ session, handleSignOut }: any) {
   return (
-    <main className="container text-center  bg-gray-700 py-2 flex justify-between">
-      <div className="flex justify-center items-start flex-col content-start px-5">
-        <h3 className="text-1xl text-white color-white">
-          Olá, {session.user.name}
-        </h3>
-        <h5 className="text-white text-xs">{session.user.email}</h5>
-      </div>
+    <>
+      <main className="container text-center  bg-gray-700 py-2 flex justify-between">
+        <div className="flex justify-center items-start flex-col content-start px-5">
+          <h3 className="text-1xl text-white color-white">
+            Olá, {session.user.name}
+          </h3>
+          <h5 className="text-white text-xs">{session.user.email}</h5>
+        </div>
 
-      <div className="flex flex-row px-5 justify-center items-center">
-        <Link legacyBehavior href={"/profile"}>
-          <a className="flex justify-center items-center mr-2 h-7 p-2 rounded text-gray text-gray bg-white">
-            Perfil
-          </a>
-        </Link>
-        <button
-          className="flex justify-center items-center rounded h-7 text-gray text-gray bg-white p-2"
-          onClick={handleSignOut}
-        >
-          Sair
-        </button>
-      </div>
-    </main>
+        <div className="flex flex-row px-5 justify-center items-center">
+          <Link legacyBehavior href={"/profile"}>
+            <a className="flex justify-center items-center mr-2 h-7 p-2 rounded text-gray text-gray bg-white">
+              Perfil
+            </a>
+          </Link>
+          <button
+            className="flex justify-center items-center rounded h-7 text-gray text-gray bg-white p-2"
+            onClick={handleSignOut}
+          >
+            Sair
+          </button>
+        </div>
+      </main>
+      <ResumeItem />
+    </>
   );
 }
 
