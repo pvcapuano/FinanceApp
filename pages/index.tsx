@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { useSession, getSession, signOut } from "next-auth/react";
-import ResumeItem from "../components/Card";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -69,7 +68,6 @@ function User({ session, handleSignOut }: any) {
           </button>
         </div>
       </main>
-      <ResumeItem />
     </>
   );
 }
